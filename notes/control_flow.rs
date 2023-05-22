@@ -29,24 +29,16 @@ Here are the general constructs that fall under the category of control flow:
 6. "if let" Expressions:
     - if let statements are a more concise way to handle pattern matching that only cares
       about one specific pattern. They are useful for handling optional values. These are
-      a more advanced topic and we may not cover them unless we have time. But here is a general
-      idea of the syntax:
-
-    enum MyEnum {
-        Variant1(i32),
-        Variant2(String),
-        Variant3(bool),
-    }
+      a more advanced topic and we will not cover them here, but here is a general
+      idea of the syntax so you have an awareness of them:
 
     fn main() {
-        let my_value = MyEnum::Variant2(String::from("Hello"));
+        let maybe_number: Option<i32> = Some(42);
 
-        if let MyEnum::Variant1(x) = my_value {
-            println!("Variant1: {}", x);
-        } else if let MyEnum::Variant2(s) = my_value {
-            println!("Variant2: {}", s);
+        if let Some(number) = maybe_number {
+            println!("The number is: {}", number);
         } else {
-            println!("Not Variant1 or Variant2");
+            println!("No number provided.");
         }
     }
 
@@ -105,7 +97,8 @@ fn main() {
     Now that we have covered the if..else statements, let's move on to match expressions.
     Match expressions provide a powerful way to handle multiple patterns and make decisions
     based on them. They allow you to match a value against different patterns and execute
-    code based on the matching pattern.
+    code based on the matching pattern. They are similar to switch/case statements in
+    javascript. The general syntax is as follows:
     */
 
     // 3. match expression example
