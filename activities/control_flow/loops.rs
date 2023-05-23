@@ -7,7 +7,8 @@ to the examples in the notes, the rust documentation, or ping me with your quest
 In the main function of this file, write three different loops, one for each type of loop: loop, while,
 and for.
 
-1. For the first loop, print the numbers from ten to one. Once the loop reaches ten, print "Liftoff! 🚀"
+1. For the first loop, print the numbers from ten to one in a countdown. Once the loop reaches ten, print
+    "Liftoff! 🚀"
 
 2. Use a while loop for the second loop. This time we will be doing fizz buzz. Print the numbers from
    one to one 50. If the number is divisible by three, print "Fizz" instead of the number. If the
@@ -31,6 +32,6 @@ Write a for loop that iterates over an array of your favorite foods. Your task i
     - Tacos
  */
 
-fn main() {
+pub fn main() {
 
 }

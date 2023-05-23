@@ -1,5 +1,3 @@
-use std::any::type_name;
-
 /*
 Welcome to the match expressions activity! In this activity, you will practice using match expressions in Rust.
 Complete the tasks below in the main function to finish the activity. If you get stuck or need a hint,
@@ -49,17 +47,6 @@ Write a match expression to determine the animal sound.
 - Run your program and observe the output based on the value of "animal."
 
 Task 5:
-Write a match expression to determine the type of a variable.
-- Declare a variable named "data" and assign it any value of your choice, such as a number, string, or boolean.
-- Write a match expression that matches the type of "data" and performs specific actions based on the type.
-- If "data" is an integer, print "Data is an integer."
-- If "data" is a string, print "Data is a string."
-- If "data" is a boolean, print "Data is a boolean."
-- For any other type of "data", print "Unknown data type."
-- Run your program and observe the output based on the value and type of "data."
-
-
-Task 6:
 Write a match expression to determine the grade based on a student's score.
 - Declare a variable named "score" and assign it any integer value of your choice within the range of 0 to 100.
 - Write a match expression that matches the value of "score" and determines the corresponding grade.
@@ -70,72 +57,20 @@ Write a match expression to determine the grade based on a student's score.
 - If "score" is below 60, print "Grade: F"
 - Run your program and observe the output based on the value of "score."
 
+Task 6:
+Write a match expression to determine the category of a value based on its numerical range.
+- Declare a variable named "value" and assign it any integer value of your choice.
+- Write a match expression that matches the value of "value" and determines its category based on the range.
+- If "value" is equal to 0, print "Value is zero!".
+- If "value" is equal to 1, 2, or 3, print "Value is a small number.".
+- If "value" is in the range of 4 to 10 (inclusive), print "Value is in the range of 4 to 10.".
+- If "value" is in the range of 11 to 50 (inclusive), print "Value is in the range of 11 to 50.".
+- For any other value of "value", print "Value is something else.".
+- Run your program and observe the output based on the value of "value".
+
 Feel free to modify the code or add more match expressions to practice different patterns. Enjoy exploring match expressions!
 */
 
-
 pub fn main() {
-    // Task 1: Determine the weather condition
-    let weather = "sunny";
 
-    match weather {
-        "sunny" => println!("It's a sunny day!"),
-        "rainy" => println!("Remember to take an umbrella."),
-        "cloudy" => println!("Expect a partly cloudy day."),
-        _ => println!("Unknown weather condition."),
-    }
-
-    // Task 2: Determine the category of a product based on its price
-    let price = 250;
-
-    match price {
-        0..=99 => println!("Low-priced product."),
-        100..=500 => println!("Mid-priced product."),
-        _ => println!("High-priced product."),
-    }
-
-    // Task 3: Determine the day of the week based on a number
-    let day = 3;
-
-    match day {
-        1 => println!("Sunday."),
-        2 => println!("Monday."),
-        3 => println!("Tuesday."),
-        4 => println!("Wednesday."),
-        5 => println!("Thursday."),
-        6 => println!("Friday."),
-        7 => println!("Saturday."),
-        _ => println!("Invalid day."),
-    }
-
-    // Task 4: Determine the animal sound
-    let animal = "dog";
-
-    match animal {
-        "cat" => println!("Meow!"),
-        "dog" => println!("Woof!"),
-        "bird" => println!("Tweet!"),
-        _ => println!("Unknown animal sound."),
-    }
-
-    // Task 5: Determine the type of a variable
-    let data: bool = true;
-
-    match data {
-        _ if data == true => println!("Data is a boolean."),
-        _ if data == false => println!("Data is a boolean."),
-        _ => println!("Unknown data type."),
-    }
-
-
-    // Task 6: Determine the grade based on a student's score
-    let score = 85;
-
-    match score {
-        90..=100 => println!("Grade: A"),
-        80..=89 => println!("Grade: B"),
-        70..=79 => println!("Grade: C"),
-        60..=69 => println!("Grade: D"),
-        _ => println!("Grade: F"),
-    }
 }
