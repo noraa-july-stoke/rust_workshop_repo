@@ -62,7 +62,8 @@ Write a match expression to determine the category of a value based on its numer
 - Declare a variable named "value" and assign it any integer value of your choice.
 - Write a match expression that matches the value of "value" and determines its category based on the range.
 - If "value" is equal to 0, print "Value is zero!".
-- If "value" is equal to 1, 2, or 3, print "Value is a small number.".
+- If "value" is equal to 1, 2, or 3, print "Value is a small number.". Use a bitwise or operator to match
+  these multiple values.
 - If "value" is in the range of 4 to 10 (inclusive), print "Value is in the range of 4 to 10.".
 - If "value" is in the range of 11 to 50 (inclusive), print "Value is in the range of 11 to 50.".
 - For any other value of "value", print "Value is something else.".

@@ -85,7 +85,7 @@ Feel free to explore the Rust documentation and experiment with different operat
 
 use rand::Rng; // Import the random number generator trait
 
-fn main() {
+pub fn main() {
     // Math Operators
     println!("=== Math Operators ===");
 
@@ -158,8 +158,33 @@ fn main() {
     let logical_not = !x; // Logical NOT
     println!("Logical NOT: {}", logical_not);
 
+/*
+   BITWISE OR OPERATOR:
+      The bitwise OR operator | doesn't return a boolean value like the logical OR operator ||.
+      it operates at the binary level, performing a bitwise OR operation on each corresponding bit
+      of the integers involved. It combines the bits from the operands, evaluating each bit
+      independently and producing a new integer as the result. Unlike the logical OR operator ||,
+      which returns a boolean value (true or false) based on the truthiness of the operands,
+      the bitwise OR operator | doesn't evaluate the truthiness or falseness of the operands.
+      Instead, it focuses on manipulating the binary representation of the integers by performing
+      the OR operation on each bit.
+
+      In Rust, the bitwise OR operator | is primarily used for low-level operations, bit manipulation,
+      and working with flags or bitmasks. It allows you to set specific bits or combine different bit
+      patterns in integers.
+
+If you're looking for logical OR behavior and a boolean result, you should use the logical OR operator ||. It evaluates the truthiness of the operands and returns a boolean value based on their logical relationship.
+
+*/
+
     let bitwise_or = 0b1010 | 0b1100; // Bitwise OR
     println!("Bitwise OR: {:b}", bitwise_or);
+
+    let a = 10; // Decimal representation of 10
+    let b = 12; // Decimal representation of 12
+
+    let bitwise_or = a | b; // Bitwise OR
+    println!("Bitwise OR: {}", bitwise_or);
 
     println!(""); // Separator
 

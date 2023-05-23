@@ -85,7 +85,7 @@ Feel free to explore the Rust documentation and experiment with different operat
 
 use rand::Rng; // Import the random number generator trait
 
-fn main() {
+pub fn main() {
     // Math Operators
     println!("=== Math Operators ===");
 

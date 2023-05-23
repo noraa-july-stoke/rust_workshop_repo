@@ -1,3 +1,5 @@
+mod math_and_logic_operators;
+
 fn main() {
-    println!("Hello, world!");
+    math_and_logic_operators::main();
 }
