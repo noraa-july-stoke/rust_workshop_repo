@@ -3,6 +3,8 @@
 We will be using a different method to run our code in this directory than in the
 'notes' directory.
 
+Note: some of these activities will require you import the code into the main.rs file of the folder.
+
 To run your activities:
 
 1. cd into the folder that contains the 'main.rs' file for the activity you want to run.
@@ -12,7 +14,6 @@ To run your activities:
 ```bash
 rustc main.rs && ./main
 ```
-
 
 This compiles your code and then runs the resultant binary called "main" that rust generates for you.
 
