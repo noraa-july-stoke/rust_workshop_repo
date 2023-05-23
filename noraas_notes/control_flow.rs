@@ -12,6 +12,9 @@ Here are most of the general constructs that fall under the category of control 
     - match expressions provide a powerful way to handle multiple patterns and make decisions
       based on them. They allow you to match a value against different patterns and execute
       code based on the matching pattern.
+    - if you have a situation where you have a bunch of if/else statements that are checking
+      the same variable for different values, the match statement is going to be your friend.
+
 
 3. "loop" Expressions:
     - loop  statements create an infinite loop that continues until explicitly terminated.
@@ -58,9 +61,6 @@ Here are most of the general constructs that fall under the category of control 
       from the function.
  */
 
-
-
-
 fn main() {
     /*
     Let's start off with basic if.. else statements. They work pretty much identically to
@@ -82,7 +82,7 @@ fn main() {
     code out our first if..else statement!
     */
 
-        // 2. if/else statement example
+    // 2. if/else statement example
     let number = 10;
 
     if number > 0 {
@@ -111,6 +111,15 @@ fn main() {
         "Thursday" => println!("It's Thursday"),
         "Friday" => println!("It's Friday"),
         _ => println!("It's a weekend day"),
+    }
+
+    // Another match statement example, note the syntax for including conditions.
+    let data: bool = true;
+
+    match data {
+        _ if data == true => println!("Data is a boolean."),
+        _ if data == false => println!("Data is a boolean."),
+        _ => println!("Unknown data type."),
     }
 
     /*
@@ -146,5 +155,4 @@ fn main() {
     experiment with different conditions, patterns, and loop conditions to get a better
     understanding of how they work.
     */
-
 }

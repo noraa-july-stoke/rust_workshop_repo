@@ -12,6 +12,20 @@ Here are the general constructs that fall under the category of control flow:
     - match expressions provide a powerful way to handle multiple patterns and make decisions
       based on them. They allow you to match a value against different patterns and execute
       code based on the matching pattern.
+    - a note: sometimes we use what is normally used for bitwise operations "|" to make
+      multiple patterns match the same code. In this case, it is used to match the same code
+      and isn't a bitwise operation. It is more like a logical or operation in this context.
+      It will make the match case match if any of the patterns match.
+      here is the syntax for that case:
+
+        match value {
+            pattern1 | pattern2 | pattern3 => {
+                // Some logic that you want to execute if any of the patterns match
+            }
+            pattern4 => {
+                // Some logic for pattern 4
+            }
+        }
 
 3. "loop" Expressions:
     - loop  statements create an infinite loop that continues until explicitly terminated.
