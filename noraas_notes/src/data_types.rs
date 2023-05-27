@@ -67,6 +67,12 @@ Creating Strings:
     By understanding these different ways to create strings and their resultant types,
     you can effectively work with strings in Rust.
 
+None type:
+
+    Rust has a none type. This is very similar to null and None in other languages. It is used
+    to represent the absence of a value.
+
+
 
 Basic Compound Types:
 
@@ -117,11 +123,11 @@ pub fn main() {
     println!("x = {}", x);
 
     // Basic string types:
-    // String is a growable string.
+    // Char: A single character. Unicode scalar value.
+    // String: a growable string.
     // This means that the size of the string can change at runtime.
     // A String is stored as a vector of bytes (Vec<u8>), but guaranteed
     // to always be a valid UTF-8 sequence.
-    // Under the hood, String is a vector of bytes (Vec<u8>)
     let x: String = "Hello, world!".to_string();
 
     // &str is a string slice.
@@ -129,7 +135,6 @@ pub fn main() {
     let x: &str = "Hello, world!";
 
     // &String is a reference to a String.
-    // This means that the size of the string can change at runtime.
     let x: &String = &"Hello, world!".to_string();
 
     /*

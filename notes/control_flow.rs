@@ -128,7 +128,7 @@ fn main() {
     }
 
     /*
-    Now let's move on to loops. We have two types of loops in Rust: loop and while loops.
+    Now let's move on to loops. We have three types of loops in Rust: loop and while loops.
     The loop keyword creates an infinite loop that continues until explicitly terminated.
     You can use break statements to exit the loop. While loops execute a block of code while
     a certain condition is true. The condition is evaluated before each iteration of the loop.
@@ -153,6 +153,12 @@ fn main() {
     while number > 0 {
         println!("Number: {}", number);
         number -= 1;
+    }
+
+    // 6. for loop statement example
+    let numbers = [1, 2, 3, 4, 5];
+    for number in numbers.iter() {
+        println!("Number: {}", number);
     }
 
     /*

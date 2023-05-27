@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 /*
 
 Now that we have installed the Rust toolchain, let's go over some really basic items in rust:
@@ -108,7 +109,7 @@ You can also disable warnings for the entire file by adding the following line t
 
 // Okay, let's write some basic functions to get a feel for things.
 
-fn main () {
+pub fn main () {
     // macros: println!, format!, vec! etc.
 
     // println!() is a macro that prints a string to the console.
@@ -121,7 +122,7 @@ fn main () {
     // vec![] is a macro that creates a Vec<T> from a list of items.
     // Arrays in rust are not resizeable, but vectors are. Vectors are closer
     // to the arrays/lists you are used to working with in javscript and python.
-    let v: Vec<i32> = vec![1, 2, 3];
+    let mut v: Vec<i32> = vec![1, 2, 3];
     println!("{:?}", v);
     // now we add a new element to the vector
     v.push(4);

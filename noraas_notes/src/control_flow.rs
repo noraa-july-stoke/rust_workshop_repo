@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 /*
 Welcome to the control flow activity!
 This activity is designed to introduce you to control flow in Rust.
@@ -58,10 +59,7 @@ Here are most of the general constructs that fall under the category of control 
       from the function.
  */
 
-
-
-
-fn main() {
+pub fn main() {
     /*
     Let's start off with basic if.. else statements. They work pretty much identically to
     the if/else statements in most other programming languages that have them.
@@ -82,7 +80,7 @@ fn main() {
     code out our first if..else statement!
     */
 
-        // 2. if/else statement example
+    // 2. if/else statement example
     let number = 10;
 
     if number > 0 {
@@ -141,10 +139,15 @@ fn main() {
         number -= 1;
     }
 
+    // 6. for loop statement example
+    let numbers = [1, 2, 3, 4, 5];
+    for number in numbers.iter() {
+        println!("Number: {}", number);
+    }
+
     /*
     These were some examples of basic control flow constructs in Rust. Feel free to
     experiment with different conditions, patterns, and loop conditions to get a better
     understanding of how they work.
     */
-
 }

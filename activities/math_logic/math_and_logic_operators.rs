@@ -108,6 +108,7 @@ of logic and math operators. Have fun exploring the combined operators in Rust!
 
       Basically, we are getting a timestamp, and then manipulating it into a (very) pseudo
       random number!
+
 */
 
 fn generate_random_number() -> u32 {
