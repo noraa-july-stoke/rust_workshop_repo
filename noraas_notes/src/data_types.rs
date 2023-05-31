@@ -59,13 +59,7 @@ Creating Strings:
     It's important to note that the resultant type depends on the method used. Methods like `String::from()`,
     `.to_string()`, and `.to_owned()` produce a `String` type, while string literals (`&str`) are naturally string slices.
 
-    When choosing the appropriate method, consider whether you need ownership of the string or a
-    reference to an existing string. Additionally, remember that `String` types are growable and
-    can be modified, while string slices (`&str`) have a fixed size and are often used for
-    read-only access or passing references.
 
-    By understanding these different ways to create strings and their resultant types,
-    you can effectively work with strings in Rust.
 
 None type:
 
@@ -85,21 +79,61 @@ Basic Compound Types:
         favorite_color: fn() -> String,
     };
 
+    -   Structs share a lot of similarities with object and classes in other
+        languages, but they are a bit different in Rust. Structs are used to
+        create custom data types that can be used in your program. They are
+        similar to tuples, but they have names associated with their data
+        fields. One of the biggest differences between structs and their
+        analogues in other languages is that structs in Rust do not have
+        methods. Structs are exactly what you make them, and nothing else.
+        There are no built-in methods, no magic mathods, and no constructors.
+        You must define all of these yourself. This provides a lot of
+        flexibility, but does mean you may have to put in some work to
+        implement the functionality you want. The impl keyword is used to
+        implement functionality on a struct such as methods.
+        Instead, you can define functions that take structs as
+        arguments.
+
+
     -   Enum: It is a user-defined type that can contain multiple variants. Enums are useful when
         you want to represent a value that can have different states or options. Each variant
         can have its own associated data. For example:
+
+        enum Direction {
+            Up,
+            Down,
+            Left,
+            Right,
+        }
+
+        Or with data assiciated:
 
         enum Person {
             Name(String),
             Age(i32),
             FavoriteColor(fn() -> String),
         }
-
+ d
     -   Tuple: It is a type that can hold multiple values of different types. Tuples are ordered
         collections where each element can have a different data type. If you need to store more
         than 2-3 values, it is recommended to use a struct instead. For example:
 
     let x: (i32, f64, String) = (5, 5.0, "Hello, world!".to_string());
+
+The option type:
+    - represents an optional value
+    - every option is either some and contains a value, or none, and does not
+    - option types are very common in rust code, as they have a wide range of uses
+    - a common place you'll see them is in the return type of functions that may fail
+    - it is an enumeration with two variants. Some and None.
+
+    enum Option<T> {
+        Some(T),
+        None,
+    }
+
+    Useful when needing to work with optional data.
+    Use Option<type> when needing to work with optional data.
 
 
 Note on References:
@@ -124,11 +158,16 @@ pub fn main() {
 
     // Basic string types:
     // Char: A single character. Unicode scalar value.
+    let c: char = 'c';
+
     // String: a growable string.
     // This means that the size of the string can change at runtime.
     // A String is stored as a vector of bytes (Vec<u8>), but guaranteed
     // to always be a valid UTF-8 sequence.
+    // The following are all valid ways to create a String.
     let x: String = "Hello, world!".to_string();
+    let x: String = "Hello, world!".to_owned();
+    let x: String = String::from("Hello, world!");
 
     // &str is a string slice.
     // This means that the size of the string is known at compile time.
@@ -136,15 +175,6 @@ pub fn main() {
 
     // &String is a reference to a String.
     let x: &String = &"Hello, world!".to_string();
-
-    /*
-    Quick note: the '&' in front of a type means that the type is a reference.
-    A reference is a pointer to a value in memory, but it is different than a
-    raw pointer or an owning pointer. We will cover references in more detail later.
-    References are denoted by the & symbol followed by the referenced type. For
-    example, &i32 is an immutable reference to an i32, and &mut String is a mutable
-    reference to a String.
-    */
 
     // Basic compound types
     // Struct is a user-defined type that can contain multiple values.
