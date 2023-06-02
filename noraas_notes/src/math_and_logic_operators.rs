@@ -95,6 +95,7 @@ number generation techniques to enhance your programs. Have fun coding!
 
 */
 
+
 // use rand::Rng; // Import the random number generator trait
 const MAX_NUMBER: u8 = 10; // Define a constant for the maximum random number
 
@@ -119,6 +120,11 @@ pub fn main() {
 
     let remainder = num1 % num2; // Modulo (Remainder)
     println!("Remainder: {}", remainder);
+
+   let floating_point_num = 10.1;
+   let integer_num = 5;
+
+    println!("Sum of float and int is {}:", floating_point_num as i32 + integer_num);
 
 //     let mut num3 = 3;
 //     num3 += 1; // Increment
