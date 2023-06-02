@@ -95,12 +95,11 @@ number generation techniques to enhance your programs. Have fun coding!
 
 */
 
-
 // use rand::Rng; // Import the random number generator trait
 const MAX_NUMBER: u8 = 10; // Define a constant for the maximum random number
 
 pub fn main() {
-   //  Math Operators
+    //  Math Operators
     println!("=== Math Operators ===");
 
     let num1: i32 = 10;
@@ -121,143 +120,151 @@ pub fn main() {
     let remainder = num1 % num2; // Modulo (Remainder)
     println!("Remainder: {}", remainder);
 
-   let floating_point_num = 10.1;
-   let integer_num = 5;
+    let floating_point_num: f64 = 10.1;
+    let integer_num: i32 = 5;
 
-    println!("Sum of float and int is {}:", floating_point_num as i32 + integer_num);
+    fn add_float_and_int(floating_point_num: i32, integer_num: f64) {
+        println!(
+            "results of add_float_and_int: {}",
+            (floating_point_num) + (integer_num as i32)
+        )
+    }
 
-//     let mut num3 = 3;
-//     num3 += 1; // Increment
-//     println!("Incremented num3: {}", num3);
+    add_float_and_int(floating_point_num as i32, integer_num as f64);
 
-//     let mut num4 = 6;
-//     num4 -= 2; // Decrement
-//     println!("Decremented num4: {}", num4);
+    println!(
+        "Sum of float and int is {}:",
+        floating_point_num as i32 + integer_num
+    );
 
+    //     let mut num3 = 3;
+    //     num3 += 1; // Increment
+    //     println!("Incremented num3: {}", num3);
 
-//     println!("");
+    //     let mut num4 = 6;
+    //     num4 -= 2; // Decrement
+    //     println!("Decremented num4: {}", num4);
 
-//     // Comparison Operators
-//     println!("=== Comparison Operators ===");
+    //     println!("");
 
-//     let a = 5;
-//     let b = 7;
+    //     // Comparison Operators
+    //     println!("=== Comparison Operators ===");
 
-//     let equal = a == b; // Equal to
-//     println!("Equal: {}", equal);
+    //     let a = 5;
+    //     let b = 7;
 
-//     let not_equal = a != b; // Not equal to
-//     println!("Not Equal: {}", not_equal);
+    //     let equal = a == b; // Equal to
+    //     println!("Equal: {}", equal);
 
-//     let greater_than = a > b; // Greater than
-//     println!("Greater Than: {}", greater_than);
+    //     let not_equal = a != b; // Not equal to
+    //     println!("Not Equal: {}", not_equal);
 
-//     let less_than = a < b; // Less than
-//     println!("Less Than: {}", less_than);
+    //     let greater_than = a > b; // Greater than
+    //     println!("Greater Than: {}", greater_than);
 
-//     let greater_than_or_equal = a >= b; // Greater than or equal to
-//     println!("Greater Than or Equal: {}", greater_than_or_equal);
+    //     let less_than = a < b; // Less than
+    //     println!("Less Than: {}", less_than);
 
-//     let less_than_or_equal = a <= b; // Less than or equal to
-//     println!("Less Than or Equal: {}", less_than_or_equal);
+    //     let greater_than_or_equal = a >= b; // Greater than or equal to
+    //     println!("Greater Than or Equal: {}", greater_than_or_equal);
 
-//     println!("");
+    //     let less_than_or_equal = a <= b; // Less than or equal to
+    //     println!("Less Than or Equal: {}", less_than_or_equal);
 
-//     // Logical Operators
-//     println!("=== Logical Operators ===");
+    //     println!("");
 
-//     let x = true;
-//     let y = false;
+    //     // Logical Operators
+    //     println!("=== Logical Operators ===");
 
-//     let logical_and = x && y; // Logical AND
-//     println!("Logical AND: {}", logical_and);
+    //     let x = true;
+    //     let y = false;
 
-//     let logical_or = x || y; // Logical OR
-//     println!("Logical OR: {}", logical_or);
+    //     let logical_and = x && y; // Logical AND
+    //     println!("Logical AND: {}", logical_and);
 
-//     let logical_not = !x; // Logical NOT
-//     println!("Logical NOT: {}", logical_not);
+    //     let logical_or = x || y; // Logical OR
+    //     println!("Logical OR: {}", logical_or);
 
-// /*
-//    BITWISE OR OPERATOR:
+    //     let logical_not = !x; // Logical NOT
+    //     println!("Logical NOT: {}", logical_not);
 
-//       In Rust, the bitwise OR operator | is primarily used for low-level operations, bit manipulation,
-//       and working with flags or bitmasks. It allows you to set specific bits or combine different bit
-//       patterns in integers.
+    // /*
+    //    BITWISE OR OPERATOR:
 
+    //       In Rust, the bitwise OR operator | is primarily used for low-level operations, bit manipulation,
+    //       and working with flags or bitmasks. It allows you to set specific bits or combine different bit
+    //       patterns in integers.
 
-//       If you're looking for logical OR behavior and a boolean result, you should use the logical
-//       OR operator ||. It evaluates the truthiness of the operands and returns a boolean value
-//       based on their logical relationship.
+    //       If you're looking for logical OR behavior and a boolean result, you should use the logical
+    //       OR operator ||. It evaluates the truthiness of the operands and returns a boolean value
+    //       based on their logical relationship.
 
-//       The bitwise OR operator | doesn't return a boolean value like the logical OR operator ||.
-//       it operates at the binary level, performing a bitwise OR operation on each corresponding bit
-//       of the integers involved. It combines the bits from the operands, evaluating each bit
-//       independently and producing a new integer as the result. Unlike the logical OR operator ||,
-//       which returns a boolean value (true or false) based on the truthiness of the operands,
-//       the bitwise OR operator | doesn't evaluate the truthiness or falseness of the operands.
-//       Instead, it focuses on manipulating the binary representation of the integers by performing
-//       the OR operation on each bit. Saying that the bitwise OR operator | focuses on manipulating
-//       the binary representation of integers by performing the OR operation on each bit, it means
-//       that the operator operates on the individual bits (0s and 1s) of the binary representation
-//       of the integers. In binary representation, each digit (bit) can have a value of either 0
-//       or 1. The bitwise OR operation is applied to the corresponding bits of two integers. It
-//       compares the bits at each position and produces a new integer where each bit is set to 1
-//       if either or both of the corresponding bits in the operands are 1.
+    //       The bitwise OR operator | doesn't return a boolean value like the logical OR operator ||.
+    //       it operates at the binary level, performing a bitwise OR operation on each corresponding bit
+    //       of the integers involved. It combines the bits from the operands, evaluating each bit
+    //       independently and producing a new integer as the result. Unlike the logical OR operator ||,
+    //       which returns a boolean value (true or false) based on the truthiness of the operands,
+    //       the bitwise OR operator | doesn't evaluate the truthiness or falseness of the operands.
+    //       Instead, it focuses on manipulating the binary representation of the integers by performing
+    //       the OR operation on each bit. Saying that the bitwise OR operator | focuses on manipulating
+    //       the binary representation of integers by performing the OR operation on each bit, it means
+    //       that the operator operates on the individual bits (0s and 1s) of the binary representation
+    //       of the integers. In binary representation, each digit (bit) can have a value of either 0
+    //       or 1. The bitwise OR operation is applied to the corresponding bits of two integers. It
+    //       compares the bits at each position and produces a new integer where each bit is set to 1
+    //       if either or both of the corresponding bits in the operands are 1.
 
-//       Here's an example to illustrate this:
-//       In this example, a and b are binary representations of integers. The bitwise OR operation
-//       a | b compares the corresponding bits of a and b. Starting from the rightmost bit, it
-//       performs the OR operation on each pair of bits:
-//       |
-//       |     1 0 1 0   (a)
-//       |   | 1 1 0 0   (b)
-//       |   -----------
-//       |     1 1 1 0   (result)
-//       |
+    //       Here's an example to illustrate this:
+    //       In this example, a and b are binary representations of integers. The bitwise OR operation
+    //       a | b compares the corresponding bits of a and b. Starting from the rightmost bit, it
+    //       performs the OR operation on each pair of bits:
+    //       |
+    //       |     1 0 1 0   (a)
+    //       |   | 1 1 0 0   (b)
+    //       |   -----------
+    //       |     1 1 1 0   (result)
+    //       |
 
+    // */
 
-// */
+    //     let bitwise_or = 0b1010 | 0b1100; // Bitwise OR
+    //     println!("Bitwise OR: {:b}", bitwise_or);
 
-//     let bitwise_or = 0b1010 | 0b1100; // Bitwise OR
-//     println!("Bitwise OR: {:b}", bitwise_or);
+    // /*
+    //       Here is the bitwise diagram for the next example:
+    //          a:  00001010
+    //          b:  00001100
+    //       ----------------
+    //          OR: 00001110
+    // */
 
-// /*
-//       Here is the bitwise diagram for the next example:
-//          a:  00001010
-//          b:  00001100
-//       ----------------
-//          OR: 00001110
-// */
+    //     let a = 10; // Decimal representation of 10
+    //     let b = 12; // Decimal representation of 12
 
-//     let a = 10; // Decimal representation of 10
-//     let b = 12; // Decimal representation of 12
+    //     let bitwise_or = a | b; // Bitwise OR
+    //     println!("Bitwise OR: {}", bitwise_or);
 
-//     let bitwise_or = a | b; // Bitwise OR
-//     println!("Bitwise OR: {}", bitwise_or);
+    //     println!("");
 
-//     println!("");
+    //     // Inclusive Range
+    //     println!("=== Inclusive Range ===");
 
-//     // Inclusive Range
-//     println!("=== Inclusive Range ===");
+    //     for num in 1..=5 {
+    //         println!("Inclusive Range: {}", num);
+    //     }
 
-//     for num in 1..=5 {
-//         println!("Inclusive Range: {}", num);
-//     }
+    //     println!("");
 
-//     println!("");
+    //     // Random Number Generation
+    //     println!("=== Random Number Generation ===");
 
-//     // Random Number Generation
-//     println!("=== Random Number Generation ===");
+    //     let mut rng = rand::thread_rng();
+    //     let random_number = rng.gen_range(1..=MAX_NUMBER); // Generate a random number between 1 and 10 (inclusive)
+    //     println!("Random Number: {}", random_number);
 
-//     let mut rng = rand::thread_rng();
-//     let random_number = rng.gen_range(1..=MAX_NUMBER); // Generate a random number between 1 and 10 (inclusive)
-//     println!("Random Number: {}", random_number);
+    //     let result = random_number % 2; // Calculate the remainder
+    //     println!("Result: {}", result);
 
-//     let result = random_number % 2; // Calculate the remainder
-//     println!("Result: {}", result);
-
-//     let final_result = random_number | result; // Bitwise OR with the random number
-//     println!("Random Number: {}, Result: {}, Final Result: {}",random_number, result, final_result);
-
+    //     let final_result = random_number | result; // Bitwise OR with the random number
+    //     println!("Random Number: {}, Result: {}, Final Result: {}",random_number, result, final_result);
 }
