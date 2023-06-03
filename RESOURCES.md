@@ -13,3 +13,6 @@ https://doc.rust-lang.org/book/
 
 RustJobs:
 https://rustjobs.dev/
+
+Rust Open-Source Discord:
+https://discord.gg/rust-lang
