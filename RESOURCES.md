@@ -4,7 +4,6 @@
 Rustlings (Excersises to help you get comfortable with language & syntax):
 https://github.com/rust-lang/rustlings/
 
-
 Rust by Example:
 https://doc.rust-lang.org/rust-by-example/
 

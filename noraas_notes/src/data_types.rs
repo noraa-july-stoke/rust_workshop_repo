@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 /*
 Data Types:
 
@@ -12,7 +13,17 @@ Basic Numeric Types:
       high precision. For example, `let x: f64 = 5.0;`.
     - There are more numeric data types than this such as u32, u128, but these are the
       most commonly used ones.
+*/
 
+fn basic_numeric() {
+    let x: i32 = 5;
+    println!("x = {}", x);
+
+    let x: f64 = 5.0;
+    println!("x = {}", x);
+}
+
+/*
 Basic String Types:
 
     - String: It is a growable string type in Rust. The size of a String can change
@@ -29,11 +40,7 @@ Basic String Types:
       a string reference to a function without transferring ownership. For example,
       `let x: &String = &"Hello, world!".to_string();`.
 
-Creating Strings:
-
-    In Rust, there are several ways to create strings. Depending on the method used, the
-    resultant type can be either a `String` or a `&str` (string slice).
-    Let's explore some of the common methods:
+    - There are multiple ways to create &strs and Strings in Rust:
 
         1. String::from():
             - This method creates a new `String` by taking ownership of a value. It is a common
@@ -58,16 +65,35 @@ Creating Strings:
 
     It's important to note that the resultant type depends on the method used. Methods like `String::from()`,
     `.to_string()`, and `.to_owned()` produce a `String` type, while string literals (`&str`) are naturally string slices.
+*/
 
+fn basic_string() {
+    // The following are all valid ways to create a String.
+    let x: String = "Hello, world!".to_string();
+    println!("x = {}", x);
 
+    let x: String = "Hello, world!".to_owned();
+    println!("x = {}", x);
 
-None type:
+    let x: String = String::from("Hello, world!");
+    println!("x = {}", x);
 
-    Rust has a none type. This is very similar to null and None in other languages. It is used
-    to represent the absence of a value.
+    // &str is a string slice.
+    // This means that the size of the string is known at compile time.
+    let x: &str = "Hello, world!";
+    println!("x = {}", x);
 
+    // &String is a reference to a String.
+    let x: &String = &"Hello, world!".to_string();
+    println!("x = {}", x);
 
+    // Reversing a string
+    let mut x: String = "Hello, world!".to_string();
+    x = x.chars().rev().collect::<String>();
+    println!("x = {}", x);
+}
 
+/*
 Basic Compound Types:
 
     -   Struct: It is a user-defined type that can hold multiple named values. Structs allow
@@ -86,40 +112,53 @@ Basic Compound Types:
         fields. One of the biggest differences between structs and their
         analogues in other languages is that structs in Rust do not have
         methods. Structs are exactly what you make them, and nothing else.
-        There are no built-in methods, no magic mathods, and no constructors.
+        There are no built-in methods, no magic methods, and no constructors.
         You must define all of these yourself. This provides a lot of
         flexibility, but does mean you may have to put in some work to
         implement the functionality you want. The impl keyword is used to
         implement functionality on a struct such as methods.
         Instead, you can define functions that take structs as
         arguments.
+*/
 
+struct Person {
+    name: String,
+    age: i32,
+    favorite_color: fn() -> String,
+}
 
+/*
     -   Enum: It is a user-defined type that can contain multiple variants. Enums are useful when
         you want to represent a value that can have different states or options. Each variant
-        can have its own associated data. For example:
+        can have its own associated data.
+*/
+enum Direction {
+    Up,
+    Down,
+    Left,
+    Right,
+}
 
-        enum Direction {
-            Up,
-            Down,
-            Left,
-            Right,
-        }
+// Associating data to each variant of an enum.
+enum PersonEnum {
+    Name(String),
+    Age(i32),
+    FavoriteColor(fn() -> String),
+}
 
-        Or with data assiciated:
-
-        enum Person {
-            Name(String),
-            Age(i32),
-            FavoriteColor(fn() -> String),
-        }
- d
+/*
     -   Tuple: It is a type that can hold multiple values of different types. Tuples are ordered
         collections where each element can have a different data type. If you need to store more
-        than 2-3 values, it is recommended to use a struct instead. For example:
+        than 2-3 values, it is recommended to use a struct instead.
 
+*/
+
+fn basic_tuple() {
     let x: (i32, f64, String) = (5, 5.0, "Hello, world!".to_string());
+    println!("x = {:?}", x);
+}
 
+/*
 The option type:
     - represents an optional value
     - every option is either some and contains a value, or none, and does not
@@ -127,71 +166,24 @@ The option type:
     - a common place you'll see them is in the return type of functions that may fail
     - it is an enumeration with two variants. Some and None.
 
-    enum Option<T> {
-        Some(T),
-        None,
-    }
 
     Useful when needing to work with optional data.
-    Use Option<type> when needing to work with optional data.
+*/
+enum Option<T> {
+    Some(T),
+    None,
+}
 
-
+/*
 Note on References:
     -   The '&' symbol in front of a type indicates that it is a reference. References are
         pointers to values in memory and allow borrowing data without taking ownership.
         In Rust, references are distinct from raw pointers or owning pointers. We will
         cover references in more detail later.
-
-These are the basic data types in Rust. Understanding and using the appropriate data types is essential for effective programming in Rust.
 */
 
 pub fn main() {
-    // Basic numeric types
-
-    // i32 is a 32-bit signed integer.
-    let x: i32 = 5;
-    println!("x = {}", x);
-
-    // f64 is a 64-bit floating point number.
-    let x: f64 = 5.0;
-    println!("x = {}", x);
-
-    // Basic string types:
-    // Char: A single character. Unicode scalar value.
-    let c: char = 'c';
-
-    // String: a growable string.
-    // This means that the size of the string can change at runtime.
-    // A String is stored as a vector of bytes (Vec<u8>), but guaranteed
-    // to always be a valid UTF-8 sequence.
-    // The following are all valid ways to create a String.
-    let x: String = "Hello, world!".to_string();
-    let x: String = "Hello, world!".to_owned();
-    let x: String = String::from("Hello, world!");
-
-    // &str is a string slice.
-    // This means that the size of the string is known at compile time.
-    let x: &str = "Hello, world!";
-
-    // &String is a reference to a String.
-    let x: &String = &"Hello, world!".to_string();
-
-    // Basic compound types
-    // Struct is a user-defined type that can contain multiple values.
-    struct Person {
-        name: String,
-        age: i32,
-        favorite_color: fn() -> String,
-    };
-
-    // Enum is a user-defined type that can contain multiple variants.
-    enum Person {
-        Name(String),
-        Age(i32),
-        FavoriteColor(fn() -> String),
-    }
-
-    // Tuple is a type that can contain multiple values. If you need to hold
-    // more than 2-3 values, it is recommended you use a struct instead.
-    let x: (i32, f64, String) = (5, 5.0, "Hello, world!".to_string());
+    basic_numeric();
+    basic_string();
+    basic_tuple();
 }

@@ -106,10 +106,9 @@ You can also disable warnings for the entire file by adding the following line t
 #![allow(dead_code)]
 */
 
-
 // Okay, let's write some basic functions to get a feel for things.
 
-pub fn main () {
+pub fn main() {
     // macros: println!, format!, vec! etc.
 
     // println!() is a macro that prints a string to the console.
@@ -127,4 +126,65 @@ pub fn main () {
     // now we add a new element to the vector
     v.push(4);
     println!("{:?}", v);
+
+    // Here is the syntax for ways to destructure different things in Rust
+
+    // Destructuring a tuple:
+    let tuple: (i32, i32, i32) = (1, 2, 3);
+    let (a, b, c) = tuple;
+    println!("a: {}, b: {}, c: {}", a, b, c);
+
+    // Desctructuring a struct:
+    struct Point {
+        x: i32,
+        y: i32,
+    }
+
+    let point = Point { x: 1, y: 2 };
+    let Point { x: a, y: b } = point;
+    println!("a: {}, b: {}", a, b);
+
+    // Destructuring an enum:
+
+    enum Color {
+        Red,
+        Green(i32),
+        Blue { alpha: f32, beta: f32 },
+    }
+
+    let color = Color::Green(42);
+    match color {
+        Color::Red => println!("Red"),
+        Color::Green(value) => println!("Green: {}", value),
+        Color::Blue { alpha, beta } => println!("Blue: {}, {}", alpha, beta),
+    }
+
+    // Array destructuring:
+
+    let array = [1, 2, 3];
+    let [a, b, c] = array;
+    println!("a: {}, b: {}, c: {}", a, b, c);
+
+    // Vector destructuring: must be handled as a slice, and due to Rust's strictness with handling uncertainty with
+    // variables that may or not be there, we need to do it like this...
+
+    let vec = vec![1, 2, 3];
+    if let [first, second, third] = vec.as_slice() {
+        println!("first: {}, second: {}, third: {}", first, second, third);
+    } else {
+        println!("Unable to destructure Vec.");
+    }
+
+    //  Slice destructuring
+    let slice = &[1, 2, 3];
+    let [a, rest @ ..] = slice;
+    println!("a: {}", a);
+    for item in rest {
+        println!("{}", item);
+    }
+
+    // Reference destructuring.
+    let value = &42;
+    let &x = value;
+    println!("x: {}", x);
 }

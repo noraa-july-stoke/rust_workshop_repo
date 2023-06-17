@@ -7,7 +7,6 @@ A repo to accompany the Rust workshop classes
 This guide provides instructions on how to install Rust programming language and its package manager Cargo on macOS and Windows systems using `rustup`, the recommended way to install the Rust programming language.
 
 ## Installing Rust and Cargo
-
 ### macOS
 
 1. **Install Rust and Cargo**

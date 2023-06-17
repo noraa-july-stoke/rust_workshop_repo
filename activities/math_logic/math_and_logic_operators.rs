@@ -1,7 +1,9 @@
 use std::time::SystemTime;
 
 /*
-Welcome to the combined operators activity! In this activity, you will be applying the concepts of logic and math operators in combination to solve various tasks. Complete the tasks below to finish the activity. If you get stuck or need a hint, feel free to refer to the examples in the notes, the Rust documentation, or ask for assistance. Good luck!
+Welcome to the combined operators activity! In this activity, you will be applying the concepts of logic and math operators in
+combination to solve various tasks. Complete the tasks below to finish the activity. If you get stuck or need a hint, feel
+free to refer to the examples in the notes, the Rust documentation, or ask for assistance. Good luck!
 
 Activity 1: Rectangle Calculation
 
