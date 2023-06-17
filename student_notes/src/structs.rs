@@ -14,23 +14,6 @@ Named-field structs:
     and named fields. Each field has a type, and its name is used to access the data it contains.
 */
 
-pub struct Person {
-    name: String,
-    age: u32,
-}
-
-impl Person {
-    pub fn new(name: &str, age: u32) -> Self {
-        Self {
-            name: name.to_string(),
-            age,
-        }
-    }
-
-    pub fn print(&self) {
-        println!("The person's name is {} and age is {}.", self.name, self.age)
-    }
-}
 
 /*
 Tuple structs:
@@ -39,17 +22,6 @@ Tuple structs:
     using dot notation along with the index of the field (like tuples).
 */
 
-pub struct Color(u8, u8, u8);
-
-impl Color {
-    pub fn new(r: u8, g: u8, b: u8) -> Self {
-        Self(r, g, b)
-    }
-
-    pub fn print(&self) {
-        println!("RGB values for black color are: {}, {}, {}", self.0, self.1, self.2)
-    }
-}
 
 /*
 Unit structs:
@@ -66,29 +38,8 @@ Unit structs:
     struct and then use trait objects of that type.
 */
 
-pub struct Unit;
-pub struct Inches;
-pub struct Centimeters;
 
-impl Inches {
-    pub fn print_length_in_inches(len: u32) {
-        println!("The length is {} inches.", len);
-    }
-}
-
-impl Centimeters {
-    pub fn print_length_in_cm(len: u32) {
-        println!("The length is {} centimeters.", len);
-    }
-}
 
 pub fn main() {
-    let person = Person::new("John Doe", 30);
-    person.print();
 
-    let black = Color::new(0, 0, 0);
-    black.print();
-
-    Inches::print_length_in_inches(10);
-    Centimeters::print_length_in_cm(25);
 }

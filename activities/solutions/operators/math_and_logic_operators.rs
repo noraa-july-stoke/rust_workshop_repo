@@ -1,3 +1,18 @@
+fn generate_random_number() -> u32 {
+    let timestamp = SystemTime::now()
+        .duration_since(SystemTime::UNIX_EPOCH)
+        .expect("Failed to retrieve system time.")
+        .as_millis();
+
+    let mut xorshift_state = timestamp as u32;
+    xorshift_state ^= xorshift_state << 13;
+    xorshift_state ^= xorshift_state >> 17;
+    xorshift_state ^= xorshift_state << 5;
+
+    xorshift_state % 100 + 1
+}
+
+
 fn main() {
     // Activity 1: Rectangle Calculation
     let length = 5;

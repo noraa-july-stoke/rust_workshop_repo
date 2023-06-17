@@ -31,17 +31,7 @@ These are the simplest form of macros and are declared using `macro_rules!`.
 Declarative macros perform textual substitution and are often used for code generation.
 */
 
-macro_rules! create_function {
-    ($func_name:ident) => (
-        fn $func_name() {
-            println!("You called {:?}()", stringify!($func_name))
-        }
-    )
-}
 
-// Use the above macro to create functions
-create_function!(foo);
-create_function!(bar);
 
 /*
 Creating Procedural Macros:
@@ -60,12 +50,5 @@ which means they can transform the code in more sophisticated ways, as seen in c
 // }
 
 pub fn main() {
-    // Using built-in macros
-    println!("Hello, {}", "macro"); // println! macro
-    let _v = vec![1, 2, 3]; // vec! macro
-    // Point { x: 1, y: 2 }; // CustomDebug derive macro
 
-    // Using our own macros
-    foo();
-    bar();
 }

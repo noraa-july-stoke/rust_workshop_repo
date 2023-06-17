@@ -84,7 +84,7 @@ In this case, however, we have an empty directory and we want to initialize a ne
 
 
 ```bash
-cd notes
+cd student_notes
 cargo init .
 ```
 

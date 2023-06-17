@@ -13,18 +13,6 @@ Here are most of the general constructs that fall under the category of control 
       have one condition. For example: For example: if condition { 5 } else { 6 }.
 */
 
-fn if_else() {
-    let number = 10;
-
-    if number > 0 {
-        println!("The number is positive");
-    } else if number < 0 {
-        println!("The number is negative");
-    } else {
-        println!("The number is zero");
-    }
-}
-
 /*
 2. "match" Expressions:
     - match expressions provide a powerful way to handle multiple patterns and make decisions
@@ -35,36 +23,11 @@ fn if_else() {
     - They are similar to switch/case statements in other languages.
 */
 
-fn match_expr() {
-    let day = "Wednesday";
-    match day {
-        "Monday" => println!("It's Monday"),
-        "Tuesday" => println!("It's Tuesday"),
-        "Wednesday" => println!("It's Wednesday"),
-        "Thursday" => println!("It's Thursday"),
-        "Friday" => println!("It's Friday"),
-        _ => println!("It's a weekend day"),
-    }
-}
-
 /*
 3. "loop" Expressions:
     - loop statements create an infinite loop that continues until explicitly terminated.
       You can use break statements to exit the loop.
 */
-
-fn loop_expr() {
-    let mut counter = 0;
-
-    loop {
-        println!("Loop iteration: {}", counter);
-        counter += 1;
-
-        if counter >= 5 {
-            break;
-        }
-    }
-}
 
 /*
 4. "while" Expressions:
@@ -73,27 +36,11 @@ fn loop_expr() {
       You can use break statements to exit the loop.
 */
 
-fn while_expr() {
-    let mut number = 3;
-
-    while number > 0 {
-        println!("Number: {}", number);
-        number -= 1;
-    }
-}
-
 /*
 5. "for" Expressions:
     - for statements create a loop that executes the body of the loop for each item in a
       collection. The loop can be exited early using break statements.
 */
-
-fn for_expr() {
-    let numbers = [1, 2, 3, 4, 5];
-    for number in numbers {
-        println!("Number: {}", number);
-    }
-}
 
 /*
 6. "if let" Expressions:
@@ -103,15 +50,6 @@ fn for_expr() {
       idea of the syntax so you have an awareness of them:
 
 */
-fn if_let_expr() {
-    let maybe_number: Option<i32> = Some(42);
-
-    if let Some(number) = maybe_number {
-        println!("The number is: {}", number);
-    } else {
-        println!("No number provided.");
-    }
-}
 
 /*
 7. "continue" Expressions:
@@ -129,11 +67,4 @@ fn if_let_expr() {
       return the value from the function.
 */
 
-pub fn main() {
-    if_else();
-    match_expr();
-    loop_expr();
-    while_expr();
-    for_expr();
-    if_let_expr();
-}
+pub fn main() {}

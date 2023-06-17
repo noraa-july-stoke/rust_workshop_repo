@@ -66,8 +66,6 @@ Feel free to modify the code or add more tasks to practice different combination
 of logic and math operators. Have fun exploring the combined operators in Rust!
 */
 
-
-
 /*
     Function to generate a random number...
     Note... I wrote this function to simulate a random number generator since
@@ -113,6 +111,7 @@ of logic and math operators. Have fun exploring the combined operators in Rust!
 
 */
 
+// Notice how rust doesn't even trust that system time is available?!
 fn generate_random_number() -> u32 {
     let timestamp = SystemTime::now()
         .duration_since(SystemTime::UNIX_EPOCH)
@@ -127,7 +126,4 @@ fn generate_random_number() -> u32 {
     xorshift_state % 100 + 1
 }
 
-pub fn main() {
-
-
-}
+pub fn main() {}

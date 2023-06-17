@@ -15,13 +15,6 @@ Basic Numeric Types:
       most commonly used ones.
 */
 
-fn basic_numeric() {
-    let x: i32 = 5;
-    println!("x = {}", x);
-
-    let x: f64 = 5.0;
-    println!("x = {}", x);
-}
 
 /*
 Basic String Types:
@@ -67,31 +60,7 @@ Basic String Types:
     `.to_string()`, and `.to_owned()` produce a `String` type, while string literals (`&str`) are naturally string slices.
 */
 
-fn basic_string() {
-    // The following are all valid ways to create a String.
-    let x: String = "Hello, world!".to_string();
-    println!("x = {}", x);
 
-    let x: String = "Hello, world!".to_owned();
-    println!("x = {}", x);
-
-    let x: String = String::from("Hello, world!");
-    println!("x = {}", x);
-
-    // &str is a string slice.
-    // This means that the size of the string is known at compile time.
-    let x: &str = "Hello, world!";
-    println!("x = {}", x);
-
-    // &String is a reference to a String.
-    let x: &String = &"Hello, world!".to_string();
-    println!("x = {}", x);
-
-    // Reversing a string
-    let mut x: String = "Hello, world!".to_string();
-    x = x.chars().rev().collect::<String>();
-    println!("x = {}", x);
-}
 
 /*
 Basic Compound Types:
@@ -99,11 +68,6 @@ Basic Compound Types:
     -   Struct: It is a user-defined type that can hold multiple named values. Structs allow
         you to define custom data structures with their own fields and behavior. For example:
 
-    struct Person {
-        name: String,
-        age: i32,
-        favorite_color: fn() -> String,
-    };
 
     -   Structs share a lot of similarities with object and classes in other
         languages, but they are a bit different in Rust. Structs are used to
@@ -121,30 +85,17 @@ Basic Compound Types:
         arguments.
 */
 
-struct Person {
-    name: String,
-    age: i32,
-    favorite_color: fn() -> String,
-}
+
 
 /*
     -   Enum: It is a user-defined type that can contain multiple variants. Enums are useful when
         you want to represent a value that can have different states or options. Each variant
         can have its own associated data.
 */
-enum Direction {
-    Up,
-    Down,
-    Left,
-    Right,
-}
+
 
 // Associating data to each variant of an enum.
-enum PersonEnum {
-    Name(String),
-    Age(i32),
-    FavoriteColor(fn() -> String),
-}
+
 
 /*
     -   Tuple: It is a type that can hold multiple values of different types. Tuples are ordered
@@ -153,10 +104,7 @@ enum PersonEnum {
 
 */
 
-fn basic_tuple() {
-    let x: (i32, f64, String) = (5, 5.0, "Hello, world!".to_string());
-    println!("x = {:?}", x);
-}
+
 
 /*
 The option type:
@@ -169,10 +117,7 @@ The option type:
 
     Useful when needing to work with optional data.
 */
-enum Option<T> {
-    Some(T),
-    None,
-}
+
 
 /*
 Note on References:
@@ -183,7 +128,5 @@ Note on References:
 */
 
 pub fn main() {
-    basic_numeric();
-    basic_string();
-    basic_tuple();
+
 }

@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 /*
 
 Now that we have installed the Rust toolchain, let's go over some really basic items in rust:
@@ -96,27 +97,17 @@ code comments: //, /* */, etc.
       Comments are ignored by the compiler. Comments can be single line or multi line. Single line
       comments start with // and continue to the end of the line. Multi line comments start with
       /* and end with */. We will cover comments in more detail later.
-*/
 
+One last note: Rust is pretty stric about basically everything. This includes unused variables,
+unused imports, etc. If you don't use something, you will get a warning. If you don't use something
+and you don't want to get a warning, you can prefix it with an underscore, like so: _x. This will
+tell the compiler that you don't care about this variable, and it will not give you a warning.
+You can also disable warnings for the entire file by adding the following line to the top of the file:
+#![allow(dead_code)]
+*/
 
 // Okay, let's write some basic functions to get a feel for things.
 
-fn main () {
-    // macros: println!, format!, vec! etc.
+pub fn main() {
 
-    // println!() is a macro that prints a string to the console.
-    println!("Hello, world!");
-
-    // format!() is a macro that creates a String from a format string and a list of arguments.
-    let s = format!("Hello, world!");
-    println!("{}", s);
-
-    // vec![] is a macro that creates a Vec<T> from a list of items.
-    // Arrays in rust are not resizeable, but vectors are. Vectors are closer
-    // to the arrays/lists you are used to working with in javscript and python.
-    let v: Vec<i32> = vec![1, 2, 3];
-    println!("{:?}", v);
-    // now we add a new element to the vector
-    v.push(4);
-    println!("{:?}", v);
 }
