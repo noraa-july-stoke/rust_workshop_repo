@@ -242,7 +242,7 @@ pub fn main() {
     };
 
     // image2.add_noise(70);
-    // image2.rotate_90_clockwise();
+    image2.rotate_90_clockwise();
     // image2.resize(200, 350);
 
     // Create a gaussian blur filter
