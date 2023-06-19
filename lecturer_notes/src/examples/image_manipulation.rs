@@ -1,7 +1,8 @@
 #![allow(dead_code)]
-use image::{ImageBuffer, Rgb, RgbImage};
+use image::{imageops, ImageBuffer, Rgb, RgbImage};
 use rand::Rng;
 
+#[derive(Clone)]
 struct Image {
     width: u32,
     height: u32,
@@ -17,6 +18,7 @@ impl Image {
             pixels,
         }
     }
+
     fn new_from_file(path: &str) -> Result<Self, image::ImageError> {
         let img = image::open(path)?.to_rgb8();
 
@@ -123,8 +125,6 @@ impl Image {
         }
     }
 
-
-
     fn display(&self) {
         for row in &self.pixels {
             for pixel in row {
@@ -132,44 +132,6 @@ impl Image {
             }
             println!();
         }
-    }
-
-    fn apply_filter(&mut self, filter: &Filter) {
-        let kernel_size = filter.kernel.len() as i32;
-        let kernel_radius = kernel_size / 2;
-
-        let mut filtered_pixels =
-            vec![vec![Rgb([0, 0, 0]); self.width as usize]; self.height as usize];
-
-        for y in 0..self.height {
-            for x in 0..self.width {
-                let mut sum_r = 0.0;
-                let mut sum_g = 0.0;
-                let mut sum_b = 0.0;
-
-                for ky in -kernel_radius..=kernel_radius {
-                    for kx in -kernel_radius..=kernel_radius {
-                        let nx = (x as i32 + kx).clamp(0, self.width as i32 - 1) as u32;
-                        let ny = (y as i32 + ky).clamp(0, self.height as i32 - 1) as u32;
-
-                        let kernel_value = filter.kernel[(ky + kernel_radius) as usize]
-                            [(kx + kernel_radius) as usize];
-
-                        let pixel = self.pixels[ny as usize][nx as usize];
-                        sum_r += kernel_value as f32 * f32::from(pixel[0]);
-                        sum_g += kernel_value as f32 * f32::from(pixel[1]);
-                        sum_b += kernel_value as f32 * f32::from(pixel[2]);
-                    }
-                }
-
-                let pixel = &mut filtered_pixels[y as usize][x as usize];
-                pixel[0] = (sum_r.round() as u8).clamp(0, 255);
-                pixel[1] = (sum_g.round() as u8).clamp(0, 255);
-                pixel[2] = (sum_b.round() as u8).clamp(0, 255);
-            }
-        }
-
-        self.pixels = filtered_pixels;
     }
 
     fn to_rgb_image(&self) -> RgbImage {
@@ -186,54 +148,87 @@ impl Image {
     }
 }
 
-struct Filter{
-    name: String,
-    kernel: Vec<Vec<f32>>,
-}
-
+struct Filter;
 impl Filter {
-    fn new(name: String, kernel: Vec<Vec<f32>>) -> Filter {
-        Filter {
-            name,
-            kernel,
+    fn blur(image: &mut Image, sigma: f32) -> RgbImage {
+        let blurry_image = imageops::blur(&image.to_rgb_image(), sigma);
+        blurry_image
+    }
+
+    fn emphasize_blue(image: &mut Image, factor: f32) {
+        for y in 0..image.height {
+            for x in 0..image.width {
+                let pixel = &mut image.pixels[y as usize][x as usize];
+                let blue = f32::from(pixel[2]) * factor;
+                pixel[2] = blue.min(255.0) as u8;
+            }
+        }
+    }
+
+    fn greenify(image: &mut Image, factor: f32) {
+        for y in 0..image.height {
+            for x in 0..image.width {
+                let pixel = &mut image.pixels[y as usize][x as usize];
+                let green = f32::from(pixel[1]) * factor;
+                pixel[1] = green.min(255.0) as u8
+            }
+        }
+    }
+
+    fn warm(image: &mut Image, factor: f32) {
+        for y in 0..image.height {
+            for x in 0..image.width {
+                let pixel = &mut image.pixels[y as usize][x as usize];
+                let red = f32::from(pixel[0]) * factor;
+                let green = f32::from(pixel[1]) * factor;
+                pixel[0] = red.min(255.0) as u8;
+                pixel[1] = green.min(255.0) as u8;
+            }
         }
     }
 }
 
 pub fn main() {
-    // let mut image = Image::new(8, 8);
+    let mut gradient_image = Image::new(8, 8);
 
-    // // Generate and save gradient image
-    // image.generate_gradient_image([0, 0, 0], [255, 255, 255]);
-    // let gradient_image = image.to_rgb_image();
-    // gradient_image
-    //     .save("images/user_generated/original_image.png")
-    //     .unwrap();
-    // image.display();
+    // Generate and save gradient image
+    gradient_image.generate_gradient_image([0, 0, 0], [255, 255, 255]);
+    let gradient_image_clone = gradient_image.clone().to_rgb_image();
+    // gradient_image_clone.display();
 
-    // Resize the image and save
-    // image.resize(4, 4);
-    // let resized_image = image.to_rgb_image();
-    // resized_image
-    //     .save("images/user_generated/resized_image.png")
-    //     .unwrap();
+    gradient_image_clone
+        .save("images/user_generated/original_gradient_image.png")
+        .unwrap();
 
-    // Rotate the image and save
-    // image.rotate_90_clockwise();
-    // let rotated_image = image.to_rgb_image();
-    // rotated_image
-    //     .save("images/user_generated/rotated_image.png")
-    //     .unwrap();
+    // Clone and resize the image, then save
+    let mut resized_image = gradient_image.clone();
+    resized_image.resize(4, 4);
+    let resized_image = resized_image.to_rgb_image();
+    resized_image
+        .save("images/user_generated/resized_gradient_image.png")
+        .unwrap();
 
-    // Add noise to the image and save
-    // image.add_noise(20);
-    // let noisy_image = image.to_rgb_image();
-    // noisy_image
-    //     .save("images/user_generated/noisy_image.png")
-    //     .unwrap();
+    // Clone and rotate the image, then save
+    let mut rotated_image = gradient_image.clone();
+    rotated_image.rotate_90_clockwise();
+    let rotated_image = rotated_image.to_rgb_image();
+    rotated_image
+        .save("images/user_generated/rotated_gradient_image.png")
+        .unwrap();
 
+    // Clone the image, add noise to it, and save
+    let mut noisy_image = gradient_image.clone();
+    noisy_image.add_noise(20);
+    let noisy_image = noisy_image.to_rgb_image();
+    noisy_image
+        .save("images/user_generated/noisy_image.png")
+        .unwrap();
+
+    // Ferris Image manipulation.
+
+    // Load ferris image from file
     let img_path = "images/input_image.png";
-    let mut image2 = match Image::new_from_file(img_path) {
+    let ferris_img = match Image::new_from_file(img_path) {
         Ok(img) => img,
         Err(e) => {
             println!("Failed to open the image at {}: {}", img_path, e);
@@ -241,30 +236,73 @@ pub fn main() {
         }
     };
 
-    // image2.add_noise(70);
-    image2.rotate_90_clockwise();
-    // image2.resize(200, 350);
+    let img_path = "images/sharp.jpg";
+    let mut sharp_image = match Image::new_from_file(img_path) {
+        Ok(img) => img,
+        Err(e) => {
+            println!("Failed to open the image at {}: {}", img_path, e);
+            return;
+        }
+    };
 
-    // Create a gaussian blur filter
-    let blur_kernel: Vec<Vec<f32>> = vec![
-        vec![1.0, 2.0, 1.0],
-        vec![2.0, 4.0, 2.0],
-        vec![1.0, 2.0, 1.0],
-    ];
-    let blur = Filter::new("Blur".to_string(), blur_kernel);
-    image2.apply_filter(&blur);
-
-
-    // Create an RgbImage from image2 and then save it
-    let output_image = image2.to_rgb_image();
-    output_image
-        .save("images/user_generated/output_image.png")
+    let mut warm_image = sharp_image.clone();
+    Filter::warm(&mut warm_image, 1.5);
+    warm_image
+        .to_rgb_image()
+        .save("images/user_generated/warm_image.png")
         .unwrap();
 
-    // image2.crop(0, 0, 200, 200);
-    // let cropped_image = image2.to_rgb_image();
-    // cropped_image
-    //     .save("images/user_generated/cropped_image.png")
-    //     .unwrap();
+    // Apply blur using the image crate's built-in blur function
+    let blurred_image = Filter::blur(&mut sharp_image, 5.0);
+    blurred_image
+        .save("images/user_generated/blurred_sharp_image.jpg")
+        .unwrap();
+
+    // Resize the image
+    let mut resized_ferris_img = ferris_img.clone();
+    resized_ferris_img.resize(100, 100);
+    resized_ferris_img
+        .to_rgb_image()
+        .save("images/user_generated/resized_ferris.png")
+        .unwrap();
+
+    // Rotate the image
+    let mut rotated_ferris_img = ferris_img.clone();
+    rotated_ferris_img.rotate_90_clockwise();
+    rotated_ferris_img
+        .to_rgb_image()
+        .save("images/user_generated/rotated_ferris.png")
+        .unwrap();
+
+    // Crop the image
+    let mut cropped_ferris_img = ferris_img.clone();
+    cropped_ferris_img.crop(100, 100, 200, 200);
+    cropped_ferris_img
+        .to_rgb_image()
+        .save("images/user_generated/cropped_ferris.png")
+        .unwrap();
+
+    // Add noise to the image
+    let mut noisy_ferris_img = ferris_img.clone();
+    noisy_ferris_img.add_noise(20);
+    noisy_ferris_img
+        .to_rgb_image()
+        .save("images/user_generated/noisy_ferris.png")
+        .unwrap();
+
+    // Clone the image, emphasize blue tones, and save
+    let mut blue_image = ferris_img.clone();
+    Filter::emphasize_blue(&mut blue_image, 5.0);
+    blue_image
+        .to_rgb_image()
+        .save("images/user_generated/blue_ferris.png")
+        .unwrap();
+
+    let mut green_image = ferris_img.clone();
+    Filter::greenify(&mut green_image, 5.0);
+    green_image
+        .to_rgb_image()
+        .save("images/user_generated/green_ferris.png")
+        .unwrap();
 
 }

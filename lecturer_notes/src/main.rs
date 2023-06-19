@@ -24,7 +24,7 @@ fn main() {
     // error_handling::main();
     // statements_expressions::main();
     // data_types::main();
-    // image_manipulation::main();
+    image_manipulation::main();
     // tuples_arrays::main();
     // py_funcs::main();
 }

@@ -126,7 +126,9 @@ fn if_let_expr() {
 9. "return" Expressions:
     - return statements are used to exit a function or closure early when a certain condition
       is met. If the return statement is inside a loop it will also terminate the loop and
-      return the value from the function.
+      return the value from the function. By convention, the return keyword is not used
+      in Rust functions unless early return is needed. The last expression in a function
+      is always implicitly returned.
 */
 
 pub fn main() {
