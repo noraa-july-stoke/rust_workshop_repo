@@ -2,6 +2,7 @@
 /*
 Error Handling in Rust:
 
+
 Rust uses two main types for error handling: Result and Option, and has a number of methods and macros for handling errors effectively.
 
 Unwrap:
