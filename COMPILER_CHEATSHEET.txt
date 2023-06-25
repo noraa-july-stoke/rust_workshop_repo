@@ -1,0 +1,66 @@
+========================================================================
+Using rustc (Rust Compiler):
+========================================================================
+Compile a Rust source file and generate an executable:
+
+rustc main.rs
+------------------------------------------------------------------------
+Specify the output file name when compiling:
+
+rustc main.rs -o output
+------------------------------------------------------------------------
+Compile with optimizations for release:
+
+rustc -O main.rs
+------------------------------------------------------------------------
+Enable additional compiler warnings:
+
+rustc -W unused main.rs
+------------------------------------------------------------------------
+Compile and produce an optimized binary with debug symbols:
+
+rustc -C debuginfo=2 -C opt-level=3 main.rs
+------------------------------------------------------------------------
+
+
+
+========================================================================
+Using cargo (Rust package manager):
+========================================================================
+Create a new Rust project:
+
+cargo new myproject
+------------------------------------------------------------------------
+Build the project (compile the code without running it):
+
+cargo build
+------------------------------------------------------------------------
+Build and run the project:
+
+cargo run
+------------------------------------------------------------------------
+Build and run the project with command-line arguments:
+
+cargo run -- arg1 arg2
+------------------------------------------------------------------------
+
+Build the project in release mode (optimized binary):
+
+cargo build --release
+------------------------------------------------------------------------
+Test the project (run unit tests):
+
+cargo test
+------------------------------------------------------------------------
+Build the project and generate documentation:
+
+cargo doc
+------------------------------------------------------------------------
+Update dependencies in the project:
+
+cargo update
+------------------------------------------------------------------------
+Clean the project (remove generated files):
+
+cargo clean
+------------------------------------------------------------------------
