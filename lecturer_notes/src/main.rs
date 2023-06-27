@@ -11,7 +11,8 @@
 // mod tuples_arrays;
 // mod examples;
 // use examples::*;
-mod rust_nuances;
+// mod rust_nuances;
+mod test_file;
 
 fn main() {
     // math_and_logic_operators::main();
@@ -28,5 +29,6 @@ fn main() {
     // image_manipulation::main();
     // tuples_arrays::main();
     // py_funcs::main();
-    rust_nuances::main();
+    // rust_nuances::main();
+    test_file::main();
 }
