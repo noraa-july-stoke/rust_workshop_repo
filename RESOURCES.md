@@ -16,6 +16,9 @@ https://rustjobs.dev/
 Rust Open-Source Discord:
 https://discord.gg/rust-lang
 
+Noraa's Rust Cheatsheet:
+https://noraa-july-stoke.github.io/cheatsheets/rust.html
+
 ## Follow-Up Projects:
 
 Write an operating system in Rust:

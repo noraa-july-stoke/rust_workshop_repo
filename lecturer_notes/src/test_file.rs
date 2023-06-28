@@ -77,6 +77,7 @@ fn vector_methods() {
 
     // Printing
     println!("{:?}", v); // Prints the vector
+
 }
 
 pub fn main() {
