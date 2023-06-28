@@ -19,6 +19,9 @@ https://discord.gg/rust-lang
 Noraa's Rust Cheatsheet:
 https://noraa-july-stoke.github.io/cheatsheets/rust.html
 
+A Bit About Macros:
+https://blog.logrocket.com/macros-in-rust-a-tutorial-with-examples/
+
 ## Follow-Up Projects:
 
 Write an operating system in Rust:
