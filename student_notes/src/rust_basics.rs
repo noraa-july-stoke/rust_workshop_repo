@@ -1,4 +1,6 @@
 #![allow(dead_code)]
+#![allow(unused_variables)]
+#![allow(dead_code)]
 /*
 
 Now that we have installed the Rust toolchain, let's go over some really basic items in rust:
@@ -12,6 +14,24 @@ macros: println!(), format!(), vec![], etc.
      a format string and a list of arguments. The vec![] macro generates code that creates
      a Vec<T> from a list of items. A Vec is a growable array. We will cover these in more
     detail later.
+*/
+
+fn macros_func() {
+    // println! usage
+    let x: i32 = 4;
+    let y: i32 = 3;
+    println!("hello world! {}, {}", x, y);
+    // two ways of macro format
+    let stringy_thing1 = format!("the value of x is: {}", x);
+    let stringy_thing2 = format!("the value of x is: {x}");
+    println!("{stringy_thing1}, {stringy_thing2}");
+
+    // invoke the vec macro
+    let vecky: Vec<i32> = vec![1, 2, 3];
+    println!("{vecky:?}")
+}
+
+/*
 
 functions: fn main() {}, fn hello() -> String {}, etc.
 
@@ -91,6 +111,25 @@ constants: const X: i32 = 5, etc.
       that the program is running. The name of constant should be SCREAMING_SNAKE_CASE. We will
       cover constants in more detail later.
 
+*/
+
+// constant def. doesn not need to be in func
+pub const MY_CONSTANT_VARIABLE: i32 = 50;
+
+fn variables_func() {
+
+    let x: i32 = 6;
+    println!("{MY_CONSTANT_VARIABLE}");
+
+    let mut y: f64 = 12.0;
+    println!("{y}");
+
+    y = 13.0;
+    println!("{y}");
+}
+
+/*
+
 code comments: //, /* */, etc.
 
     - comments in rust are similar to comments in other languages. They are used to document code.
@@ -109,5 +148,5 @@ You can also disable warnings for the entire file by adding the following line t
 // Okay, let's write some basic functions to get a feel for things.
 
 pub fn main() {
-
+    macros_func();
 }

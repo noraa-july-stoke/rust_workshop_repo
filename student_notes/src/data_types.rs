@@ -15,7 +15,6 @@ Basic Numeric Types:
       most commonly used ones.
 */
 
-
 /*
 Basic String Types:
 
@@ -48,11 +47,7 @@ Basic String Types:
             - This method creates a new `String` by making a copy of an existing `String` or `&str`.
             - Example: `let s: String = "Hello, world!".to_owned();`
 
-        4. .to_string():
-            - This method creates a new `String` by converting the value to a `String` using the `ToString` trait.
-            - Example: `let n: i32 = 42; let s: String = n.to_string();`
-
-        5. &str:
+        4. &str:
             - String literals (enclosed in double quotes) are of type `&str`, which is a string slice.
             - Example: `let s: &str = "Hello, world!";`
 
@@ -60,6 +55,20 @@ Basic String Types:
     `.to_string()`, and `.to_owned()` produce a `String` type, while string literals (`&str`) are naturally string slices.
 */
 
+fn strings() {
+
+    let x: i32 = 5;
+
+    let y = x;
+
+
+    fn num_func(x: &i32) {
+        println!("{x}");
+    }
+
+    num_func(&x);
+
+}
 
 
 /*
@@ -128,5 +137,5 @@ Note on References:
 */
 
 pub fn main() {
-
+    strings();
 }

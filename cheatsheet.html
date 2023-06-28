@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <title>Noraa's Rust Basic Cheatsheet</title>
+    <style>
+        body {
+            background-color: #000;
+            font-family: Arial, sans-serif;
+            color: #ddd;
+            line-height: 1.6em;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: #444;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        h2, h3 {
+            color: #ddd;
+            padding: 10px;
+            border-bottom: 2px solid #ddd;
+            background-color: royalblue;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #222;
+            padding: 10px;
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            padding: 5px;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .code-comment {
+            color: #888;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            overflow: auto;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Noraa's Rust Cheatsheet</h1>
+    <div class="container">
+        <h2>Basics</h2>
+
+        <h3>Macros</h3>
+        <ul>
+            <li><pre><code class="language-rust">println!()</code></pre>: Prints a formatted string to the console.</li>
+            <li><pre><code class="language-rust">format!()</code></pre>: Creates a formatted string.</li>
+            <li><pre><code class="language-rust">vec![]</code></pre>: Creates a vector (growable array) from a list of items.</li>
+        </ul>
+
+        <h3>Functions</h3>
+        <pre><code class="language-rust">
+            fn functionName(parameter1: Type, parameter2: Type) -> ReturnType {<br>
+            // Function body<br>
+            // Return statement: return value;<br>
+            }
+        </code>
+        </pre>
+
+        <h3>Access Modifiers</h3>
+        <ul>
+            <li><pre><code class="language-rust"></code><code>pub</code> </pre>: Marks an item as public, allowing it to be accessed from outside the current module.</li>
+        </ul>
+
+        <h3>Types</h3>
+        <ul>
+            <li><pre><code class="language-rust">i32</code></pre>: 32-bit signed integer.</li>
+            <li><pre><code class="language-rust">f64</code></pre>: 64-bit floating-point number.</li>
+            <li><pre><code class="language-rust">String</code></pre>: Growable string.</li>
+            <li><pre><code class="language-rust">Vec&lt;T&gt;</code></pre>: Vector (growable array) of type T.</li>
+        </ul>
+
+        <h3>Variables</h3>
+        <ul>
+            <li>Declaration: <pre><code class="language-rust">let variableName = value;</code></pre></li>
+            <li>Mutable variables: <pre><code class="language-rust">let mut variableName = value;</code></pre></li>
+        </ul>
+
+        <h3>Constants</h3>
+        <ul>
+            <li>Declaration: <pre><code class="language-rust">const CONSTANT_NAME: Type = value;</code></pre></li>
+        </ul>
+
+        <h3>Code Comments</h3>
+        <ul>
+            <li>Single-line comment: <pre><code class="language-rust">// Comment text</code></pre></li>
+            <li>Multi-line comment: <pre><code class="language-rust">/* Comment text */</code></pre></li>
+        </ul>
+
+ <h3>String Methods</h3>
+<pre><code class="language-rust">
+    fn string_methods() &#123;<br>
+    &emsp;let s = String::from("Hello, ");<br><br>
+
+    &emsp;// Concatenation and Appending<br>
+    &emsp;let concatenated = s + "World!"; // Concatenates two strings<br>
+    &emsp;let appended = format!("{}{}", s, "World!"); // Appends strings using format macro<br>
+    &emsp;let mut mutable_s = String::from("Hello, ");<br>
+    &emsp;mutable_s.push_str("World!"); // Appends a string slice to the string<br><br>
+
+    &emsp;// Slicing and Indexing<br>
+    &emsp;let sliced = &s[0..5]; // Slices a portion of the string<br>
+    &emsp;let first_char = s.chars().next(); // Returns the first character as an Option&lt;char&gt;<br><br>
+
+    &emsp;// Length and Capacity<br>
+    &emsp;let length = s.len(); // Returns the length of the string in bytes<br>
+    &emsp;let capacity = s.capacity(); // Returns the current capacity of the string in bytes<br><br>
+
+    &emsp;// Iteration and Manipulation<br>
+    &emsp;for c in s.chars() &#123;<br>
+    &emsp;&emsp;// Iterates over the characters of the string<br>
+    &emsp;&emsp;println!("{}", c);<br>
+    &emsp;&#125;<br>
+    &emsp;let replaced = s.replace("l", "L"); // Replaces all occurrences of a substring<br>
+    &emsp;let trimmed = s.trim(); // Removes leading and trailing whitespaces<br>
+    &emsp;let uppercase = s.to_uppercase(); // Converts the string to uppercase<br>
+    &emsp;let lowercase = s.to_lowercase(); // Converts the string to lowercase<br><br>
+
+    &emsp;// Searching and Checking<br>
+    &emsp;let contains = s.contains("ell"); // Checks if the string contains a substring<br>
+    &emsp;let starts_with = s.starts_with("Hel"); // Checks if the string starts with a substring<br>
+    &emsp;let ends_with = s.ends_with("lo!"); // Checks if the string ends with a substring<br>
+    &emsp;let is_empty = s.is_empty(); // Checks if the string is empty<br><br>
+
+    &emsp;// Conversion<br>
+    &emsp;let integer = s.parse::<i32>(); // Parses the string into an integer<br><br>
+
+    &emsp;// Printing<br>
+    &emsp;println!("{}", s); // Prints the string<br>
+    &#125;
+</code></pre>
+
+
+<h3>Vector Methods</h3>
+<pre><code class="language-rust">
+    fn vector_methods() &#123;<br>
+    &emsp;let mut v = vec![1, 2, 3, 4, 5];<br><br>
+
+    &emsp;// Accessing Elements<br>
+    &emsp;let first_element = v[0]; // Accesses an element at a specific index<br>
+    &emsp;let last_element = v.last(); // Returns an Option reference to the last element<br><br>
+
+    &emsp;// Adding and Removing Elements<br>
+    &emsp;v.push(6); // Appends an element to the end of the vector<br>
+    &emsp;let popped_element = v.pop(); // Removes and returns the last element<br><br>
+
+    &emsp;// Iteration and Manipulation<br>
+    &emsp;for element in &v &#123;<br>
+    &emsp;&emsp;// Iterates over the elements of the vector<br>
+    &emsp;&emsp;println!("{}", element);<br>
+    &emsp;&#125;<br>
+    &emsp;v.sort(); // Sorts the elements in ascending order<br>
+    &emsp;v.reverse(); // Reverses the order of elements<br><br>
+
+    &emsp;// Slicing<br>
+    &emsp;let slice = &v[1..3]; // Slices a portion of the vector<br><br>
+
+    &emsp;// Length and Capacity<br>
+    &emsp;let length = v.len(); // Returns the number of elements in the vector<br>
+    &emsp;let capacity = v.capacity(); // Returns the current capacity of the vector<br><br>
+
+    &emsp;// Searching and Checking<br>
+    &emsp;let contains = v.contains(&3); // Checks if the vector contains a specific element<br>
+    &emsp;let index = v.iter().position(|&x| x == 4); // Returns the index of the first occurrence of an element<br><br>
+
+    &emsp;// Conversion<br>
+    &emsp;let string = v.into_iter().map(|x| x.to_string()).collect::<Vec<String>>(); // Converts the vector elements into strings<br><br>
+
+    &emsp;// Printing<br>
+    &emsp;println!("{:?}", v); // Prints the vector<br>
+    &#125;
+</code></pre>
+
+
+<h2>Example Usage</h2>
+<pre><code class="language-rust">
+    fn main() &#123;<br>
+    &emsp;// Macros<br>
+    &emsp;println!("Hello, world!");<br>
+
+    &emsp;let s = format!("Hello, world!");<br>
+    &emsp;println!("{}", s);<br><br>
+
+    &emsp;let mut v: Vec<i32> = vec![1, 2, 3];<br>
+    &emsp;println!("{:?}", v);<br>
+    &emsp;v.push(4);<br>
+    &emsp;println!("{:?}", v);<br><br>
+
+    &emsp;// Functions<br>
+    &emsp;fn add(a: i32, b: i32) -> i32 &#123;<br>
+    &emsp;&emsp;a + b<br>
+    &emsp;&#125;<br>
+
+    &emsp;let result = add(3, 4);<br>
+    &emsp;println!("Result: {}", result);<br><br>
+
+    &emsp;// Variables<br>
+    &emsp;let x = 5;<br>
+    &emsp;let mut y = 10;<br>
+    &emsp;y = y + x;<br>
+    &emsp;println!("y: {}", y);<br><br>
+
+    &emsp;// Constants<br>
+    &emsp;const MAX_VALUE: i32 = 100;<br>
+    &emsp;println!("Max Value: {}", MAX_VALUE);<br><br>
+
+    &emsp;// Code comments<br>
+    &emsp;// This is a comment<br>
+
+    &emsp;/**<br>
+    &emsp;This is a multi-line comment.<br>
+    &emsp;*/<br>
+
+    &emsp;/**<br>
+    &emsp;You can also disable warnings for the entire file by adding the following line to the top of the file:<br>
+    &emsp;#![allow(dead_code)]<br>
+    &emsp;*/<br>
+    &#125;
+</code></pre>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-rust.min.js"></script>
+
+</body>
+</html>
