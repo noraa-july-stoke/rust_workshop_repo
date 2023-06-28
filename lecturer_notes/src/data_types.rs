@@ -169,6 +169,7 @@ The option type:
 
     Useful when needing to work with optional data.
 */
+
 enum Option<T> {
     Some(T),
     None,

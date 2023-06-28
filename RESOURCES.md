@@ -32,3 +32,8 @@ https://doc.rust-lang.org/book/ch11-00-testing.html
 
 Write a basic Http framework in Rust:
 https://medium.com/@noraa.july.stoke/tutorial-build-a-hello-world-http-framework-in-rust-d1651ebab0c1
+
+## Other Resources:
+
+Video on Rust's Option and Result types:
+https://www.youtube.com/watch?v=JKmkKae-EhM

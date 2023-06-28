@@ -39,6 +39,7 @@ enum Result<T, E> {
     Err(E),
 }
 
+
 impl<T, E> Result<T, E> {
     fn unwrap(self) -> T {
         match self {
