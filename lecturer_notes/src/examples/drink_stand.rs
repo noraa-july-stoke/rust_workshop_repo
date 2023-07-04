@@ -73,18 +73,21 @@ impl fmt::Display for Drink {
 pub fn main() {
     let mut drinks = Vec::new();
 
+
     drinks.push(Drink::new(
         "Lemonade".into(),
         DrinkSize::Small,
         Flavor::Lemon,
         1.50,
     ));
+
     drinks.push(Drink::new(
         "Orange Juice".into(),
         DrinkSize::Large,
         Flavor::Orange,
         2.00,
     ));
+
     drinks.push(Drink::new(
         "Grape Soda".into(),
         DrinkSize::Medium,

@@ -98,8 +98,6 @@ use rand::Rng; // Import the random number generator trait
 const MAX_NUMBER: u8 = 10; // Define a constant for the maximum random number
 
 pub fn main() {
-
-
     // /*
     //    BITWISE OR OPERATOR:
 
@@ -138,9 +136,8 @@ pub fn main() {
     //       |
 
     // */
-
-        // let bitwise_or = 0b1010 | 0b1100; // Bitwise OR
-        // println!("Bitwise OR: {:b}", bitwise_or);
+    // let bitwise_or = 0b1010 | 0b1100; // Bitwise OR
+    // println!("Bitwise OR: {:b}", bitwise_or);
 
     // /*
     //       Here is the bitwise diagram for the next example:
@@ -149,6 +146,22 @@ pub fn main() {
     //       ----------------
     //          OR: 00001110
     // */
+    // %3 is fizz %5 buzz %%both fizzbuzz
+    // all number from 1 to num print stuff
 
-
+    fn fizz_buzz(num: u32) {
+        for i in 1..=num {
+            if (i % 3 == 0) && (i % 5 == 0) {
+                println!("fizzbuzz")
+            } else if i % 3 == 0 {
+                println!("fizz")
+            } else if i % 5 == 0 {
+                println!("buzz")
+            } else {
+                println!("{i}")
+            }
+        }
+    }
+    let num = 15;
+    fizz_buzz(num);
 }

@@ -9,10 +9,11 @@
 // mod statements_expressions;
 // mod data_types;
 // mod tuples_arrays;
-// mod examples;
-// use examples::*;
+mod examples;
+use examples::*;
 // mod rust_nuances;
-mod test_file;
+// mod test_file;
+
 
 fn main() {
     // math_and_logic_operators::main();
@@ -26,9 +27,9 @@ fn main() {
     // error_handling::main();
     // statements_expressions::main();
     // data_types::main();
-    // image_manipulation::main();
+    // examples::image_manipulation::main();
     // tuples_arrays::main();
     // py_funcs::main();
     // rust_nuances::main();
-    test_file::main();
+    // test_file::main();
 }

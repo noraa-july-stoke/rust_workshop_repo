@@ -26,6 +26,7 @@ Here are some of the commonly used operators:
    increment operator += increases the value of a variable by a specific amount, and the decrement operator -=
    decreases the value of a variable by a specific amount.
 
+
 2. Comparison Operators:
    - Equal to: ==
    - Not equal to: !=

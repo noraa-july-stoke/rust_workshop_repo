@@ -11,7 +11,6 @@ fn main(){
 
     // Task 2: Determine the category of a product based on its price
     let price = 250;
-
     match price {
         0..=99 => println!("Low-priced product."),
         100..=500 => println!("Mid-priced product."),

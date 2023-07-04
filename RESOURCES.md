@@ -33,8 +33,12 @@ https://doc.rust-lang.org/book/ch12-01-accepting-command-line-arguments.html
 Writing automated tests:
 https://doc.rust-lang.org/book/ch11-00-testing.html
 
-Write a basic Http framework in Rust:
+Write a basic "hello world" backend framework in Rust:
 https://medium.com/@noraa.july.stoke/tutorial-build-a-hello-world-http-framework-in-rust-d1651ebab0c1
+
+
+Build A Rust Backend (Really FAST Web Services with Actix Web)
+https://www.youtube.com/watch?v=L8tWKqSMKUI
 
 ## Other Resources:
 

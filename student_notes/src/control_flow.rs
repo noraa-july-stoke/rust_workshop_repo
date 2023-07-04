@@ -67,4 +67,20 @@ Here are most of the general constructs that fall under the category of control 
       return the value from the function.
 */
 
-pub fn main() {}
+pub fn main() {
+    fn fizz_buzz(num: i32) {
+        let mut counter = 1;
+        while counter <= num {
+            match (counter % 3, counter % 5) {
+                (0, 0) => println!("FizzBuzz"),
+                (0, _) => println!("Fizz"),
+                (_, 0) => println!("Buzz"),
+                _ => println!("{counter}"),
+            }
+            counter += 1;
+        }
+    }
+
+    let x = 50;
+    fizz_buzz(x);
+}
