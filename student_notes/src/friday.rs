@@ -1,7 +1,6 @@
 pub fn main() {
 
     let data = vec![1,2,3,4,5];
-
     let closure1 = || println!("{data:?}");
     let closure2 = move || println!("{data:?}");
 
